@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="padding: 5%;">
+    <h1 style="background: #000; color: #fff; padding: 20px;">TOTAL REVENUE: Rs. {{ total_sales }}</h1>
+    <h3>All Orders:</h3>
+    <ul>
+        {% for o in orders %}
+            <li>Order #{{ o.id }} by {{ o.user.username }} - Rs. {{ o.total_price }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

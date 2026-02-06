@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="max-width: 400px; margin: 50px auto; padding: 30px; border: 1px solid #eee;">
+    <h2 style="letter-spacing: 2px;">CREATE ACCOUNT</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-black">REGISTER</button>
+    </form>
+</div>
+{% endblock %}

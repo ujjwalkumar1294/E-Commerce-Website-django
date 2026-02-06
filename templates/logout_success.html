@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="max-width: 500px; margin: 150px auto; text-align: center; padding: 40px;">
+    <div style="background: #f0f9ff; border-left: 4px solid #2e7d32; padding: 30px; margin-bottom: 30px;">
+        <h2 style="text-transform: uppercase; letter-spacing: 2px; color: #2e7d32; margin: 0 0 15px 0;">
+            ✓ Logged Out Successfully
+        </h2>
+        <p style="font-size: 14px; color: #666; margin: 0 0 20px 0; line-height: 1.6;">
+            You have been successfully logged out. We hope to see you again soon!
+        </p>
+    </div>
+    
+    <div style="display: flex; gap: 15px; justify-content: center;">
+        <a href="{% url 'home' %}">
+            <button class="btn-black" style="padding: 12px 30px; min-width: 150px;">
+                Continue Shopping
+            </button>
+        </a>
+        <a href="{% url 'login' %}">
+            <button class="btn-black" style="padding: 12px 30px; min-width: 150px; background: #333;">
+                Login Again
+            </button>
+        </a>
+    </div>
+</div>
+{% endblock %}

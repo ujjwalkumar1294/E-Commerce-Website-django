@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="max-width: 800px; margin: 50px auto; padding: 20px; border: 1px solid #000;">
+    <h2>CHECKOUT - {{ product.name }}</h2>
+    <p>Price: Rs. {{ product.price }}</p>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder="Shipping Address" style="width:100%; padding:10px; margin:10px 0;">
+        <button type="submit" class="btn-black">CONFIRM ORDER</button>
+    </form>
+</div>
+{% endblock %}

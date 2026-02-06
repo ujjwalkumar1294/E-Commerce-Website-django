@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="max-width: 400px; margin: 80px auto; padding: 40px; border: 1px solid #eee;">
+    <h2 style="text-align: center; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px;">Login</h2>
+    
+    <form method="post" style="display: flex; flex-direction: column; gap: 15px;">
+        {% csrf_token %}
+        
+        {% if form.non_field_errors %}
+            <div style="background: #ffebee; color: #c62828; padding: 10px; text-align: center; font-size: 12px;">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+        
+        <div>
+            <label style="display: block; font-weight: 600; font-size: 12px; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px;">
+                {{ form.username.label }}
+            </label>
+            {{ form.username }}
+            {% if form.username.errors %}
+                <small style="color: #c62828;">{{ form.username.errors }}</small>
+            {% endif %}
+        </div>
+        
+        <div>
+            <label style="display: block; font-weight: 600; font-size: 12px; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px;">
+                {{ form.password.label }}
+            </label>
+            {{ form.password }}
+            {% if form.password.errors %}
+                <small style="color: #c62828;">{{ form.password.errors }}</small>
+            {% endif %}
+        </div>
+        
+        <button type="submit" class="btn-black" style="margin-top: 10px;">Login</button>
+    </form>
+    
+    <p style="text-align: center; font-size: 12px; margin-top: 20px;">
+        Don't have an account? <a href="{% url 'register' %}" style="color: #000; text-decoration: underline;">Register here</a>
+    </p>
+</div>
+
+<style>
+    input[type="text"], input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 13px;
+        box-sizing: border-box;
+    }
+    
+    input[type="text"]:focus, input[type="password"]:focus {
+        outline: none;
+        border: 1px solid #000;
+    }
+</style>
+{% endblock %}

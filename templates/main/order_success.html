@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 100px auto; text-align: center; padding: 40px;">
+    <div style="background: #f0f9ff; border: 1px solid #d0e8ff; padding: 40px; margin-bottom: 30px; border-radius: 4px;">
+        <div style="font-size: 60px; margin-bottom: 20px;">✓</div>
+        <h2 style="text-transform: uppercase; letter-spacing: 2px; color: #2e7d32; margin: 0 0 15px 0;">Order Confirmed!</h2>
+        <p style="font-size: 14px; color: #555; margin: 0 0 20px 0; line-height: 1.6;">
+            Thank you for your purchase. Your order has been placed successfully and a confirmation email has been sent to your registered email address.
+        </p>
+        <p style="font-size: 12px; color: #999; margin: 0;">
+            Order will be delivered within 3-5 business days.
+        </p>
+    </div>
+    
+    <div style="background: #fafafa; padding: 30px; margin-bottom: 30px; border: 1px solid #eee;">
+        <h3 style="margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 1px; font-size: 14px;">What's Next?</h3>
+        <ul style="text-align: left; max-width: 400px; margin: 0 auto; padding: 0; list-style: none;">
+            <li style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 13px;">
+                <strong>✓ Order Placed</strong> - Your order is now in our system
+            </li>
+            <li style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 13px;">
+                <strong>Processing</strong> - We'll prepare your items for shipment
+            </li>
+            <li style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 13px;">
+                <strong>Shipped</strong> - You'll receive tracking information via email
+            </li>
+            <li style="padding: 10px 0; font-size: 13px;">
+                <strong>Delivered</strong> - Your order arrives at your doorstep
+            </li>
+        </ul>
+    </div>
+    
+    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+        <a href="{% url 'home' %}" style="text-decoration: none;">
+            <button class="btn-black" style="padding: 12px 30px; min-width: 180px;">Continue Shopping</button>
+        </a>
+        <a href="{% url 'my_orders' %}" style="text-decoration: none;">
+            <button class="btn-black" style="padding: 12px 30px; min-width: 180px; background: #333;">View Orders</button>
+        </a>
+    </div>
+</div>
+{% endblock %}

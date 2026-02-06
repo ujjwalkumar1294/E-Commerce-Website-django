@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="padding: 40px 5%; max-width: 1200px; margin: 0 auto;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start;">
+        
+        <!-- Product Images -->
+        <div>
+            <div class="img-wrapper" style="padding-top: 130%; margin-bottom: 20px;">
+                <img src="{{ product.image_main.url }}" class="img-main" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                <img src="{{ product.image_hover.url }}" class="img-hover" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.6s ease-in-out;">
+            </div>
+        </div>
+        
+        <!-- Product Details -->
+        <div>
+            <h1 style="font-size: 28px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 20px 0;">
+                {{ product.name }}
+            </h1>
+            
+            <div style="font-size: 20px; font-weight: 700; margin-bottom: 20px; color: #000;">
+                Rs. {{ product.price }}
+            </div>
+            
+            {% if product.is_new %}
+                <div style="display: inline-block; background: #000; color: #fff; padding: 5px 12px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">
+                    NEW ARRIVAL
+                </div>
+            {% endif %}
+            
+            <div style="margin-bottom: 30px;">
+                <p style="font-size: 14px; line-height: 1.6; color: #555;">
+                    {{ product.description }}
+                </p>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <span style="font-size: 12px; text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">Stock: </span>
+                <span style="font-size: 14px;">
+                    {% if product.stock > 0 %}
+                        <span style="color: #2e7d32;">{{ product.stock }} in stock</span>
+                    {% else %}
+                        <span style="color: #c62828;">Out of stock</span>
+                    {% endif %}
+                </span>
+            </div>
+            
+            {% if product.stock > 0 %}
+                <form method="post" action="{% url 'checkout' product.id %}" style="margin-bottom: 30px;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-black" style="padding: 15px 40px; font-size: 14px;">
+                        ADD TO CART
+                    </button>
+                </form>
+            {% else %}
+                <button class="btn-black" disabled style="padding: 15px 40px; font-size: 14px; background: #999; cursor: not-allowed;">
+                    OUT OF STOCK
+                </button>
+            {% endif %}
+            
+            <div style="border-top: 1px solid #eee; padding-top: 20px; margin-top: 30px;">
+                <p style="font-size: 12px; color: #666; line-height: 1.8;">
+                    <strong>Shipping:</strong> Free shipping on orders above Rs. 1000<br>
+                    <strong>Returns:</strong> 7 days easy returns<br>
+                    <strong>Delivery:</strong> 3-5 business days
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .img-wrapper:hover .img-hover {
+        opacity: 1;
+    }
+</style>
+{% endblock %}

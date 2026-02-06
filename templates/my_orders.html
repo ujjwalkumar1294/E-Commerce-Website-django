@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="padding: 5% 10%;">
+    <h2>YOUR PURCHASE HISTORY</h2>
+    {% for order in orders %}
+        <div style="border-bottom: 1px solid #eee; padding: 10px 0;">
+            Order #{{ order.id }} - Rs. {{ order.total_price }} - {{ order.created_at|date }}
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
